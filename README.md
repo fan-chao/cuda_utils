@@ -6,7 +6,7 @@ CUDA utils API
 支持的功能：
 1. 内存管理 - cuAllocMapped
 在Jetson系列的集成盒子上，CPU和GPU共用同一个内存地址，加速数据传输。
-在PC段的显卡，CPU和GPU的内存地址可能不一致，需要分开使用CPU和GPU的指针。
+在PC端的显卡，CPU和GPU的内存地址可能不一致，需要分开使用CPU和GPU的指针。
 
 2. 硬件支持的缩放与颜色空间转换操作 - cuResizeRGBLike
 实现将ARGB/RGBA转换成BGR，并且同时实现缩放操作。
