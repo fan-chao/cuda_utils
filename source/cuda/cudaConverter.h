@@ -36,9 +36,9 @@ namespace cu {
         , ImageFormat inputImageFormat
         , float* output
         , ImageFormat outputImageFormat
-        , int* meanData
-        , float* scales
-        , int nBatchSize
+        , int batchSize
+        , float* meanData
+        , float scale
         , cudaStream_t stream);
 
 
@@ -55,9 +55,24 @@ namespace cu {
         , int outputWidth
         , int outputHeight
         , ImageFormat outputImageFormat
-        , int* meanData
-        , float* scales
-        , int nBatchSize
+        , int batchSize
+        , float* meanData
+        , float scale
         , cudaStream_t stream);
+
+    cudaError_t cudaResizeConvertPadding(unsigned char* input
+    , int inputWidth
+    , int inputHeight
+    , int inputPitch
+    , ImageFormat inputImageFormat
+    , float* output
+    , int outputWidth
+    , int outputHeight
+    , ImageFormat outputImageFormat
+    , int batchSize
+    , float* meanData
+    , float scale
+    , cudaStream_t stream);
+
 }
 #endif // !__CUDA_CONVERTER_H__
