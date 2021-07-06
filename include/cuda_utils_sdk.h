@@ -67,18 +67,42 @@ CU_API int cuResizeRGBLike(unsigned char* input, size_t input_width, size_t inpu
 CU_API int cuResizeRGBLike(float* input, size_t input_width, size_t input_height, int pitch, ImageFormat input_image_format
     , float* output, size_t output_width, size_t output_height, void* stream);
 
+
+/*
+* cuda padding resize
+*/
+CU_API int cuResizePaddingRGBLike(unsigned char* input, size_t input_width, size_t input_height, int pitch, ImageFormat input_image_format
+    , unsigned char* output, size_t output_width, size_t output_height, void* stream) ;
+
+CU_API int cuResizePaddingRGBLike(float* input, size_t input_width, size_t input_height, int pitch, ImageFormat input_image_format
+    , float* output, size_t output_width, size_t output_height, void* stream) ;
+
+
+
 /*
 * cuda convert
 */
 CU_API int cuConvert(unsigned char* input, int width, int height, int pitch, ImageFormat input_image_format
-    , float* output, ImageFormat output_image_format, int* mean_data, float* scales, int n_batch_size, void* stream);
+    , float* output, ImageFormat output_image_format, int batch_size, float* mean_data, float scale, void* stream);
 
 /*
 * cuda resize and convert
 */
 CU_API int cuResizeConvert(unsigned char* input, int input_width, int input_height, int input_pitch, ImageFormat input_image_format
-    , float* output, int output_width, int output_height, ImageFormat output_image_format
-    , int* offsets, float* scales, int nBatchSize, void* stream);
+    , float* output, int output_width, int output_height, ImageFormat output_image_format, int batch_size
+    , float* mean_data, float scale, void* stream);
+
+/*
+* cuda padding resize and convert
+*/
+CU_API int cuResizeConvertPadding(unsigned char* input, int input_width, int input_height, int input_pitch, ImageFormat input_image_format
+    , float* output, int output_width, int output_height, ImageFormat output_image_format, int batch_size
+    , float* mean_data, float scale, void* stream);
+
+
+
+
+
 
 /*
 * cuda fill array value
